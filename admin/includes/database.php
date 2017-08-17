@@ -3,6 +3,7 @@ require_once('config.php');
 
 
 class Database{
+
 	public $conn;
 
 	public function __construct(){
@@ -18,7 +19,7 @@ class Database{
 	}
 
 	public function query($sql){
-		$result = $this->conn->query($this->conn, $sql);
+		$result = $this->conn->query($sql);
 		$this->confirm_query($result);
 		return $result;
 	}

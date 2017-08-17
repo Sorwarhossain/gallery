@@ -15,7 +15,6 @@
                                 <i class="fa fa-file"></i> Blank Page
                             </li>
                         </ol>
-
                         <?php 
                         $sql = "SELECT * FROM users WHERE id=2";
                         $result = $database->query($sql);
