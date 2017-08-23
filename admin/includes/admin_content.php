@@ -17,17 +17,6 @@
                         </ol>
                         <?php 
 
-                     /*   $result_set = User::find_all_user();
-                        while($row = mysqli_fetch_array($result_set)){
-                            echo $row['first_name'] . ' ' . $row['last_name'] . "<br>";
-                        }*/
-
-
-
-                      /*  $found = User::find_user_by_id(1);
-                        $user = User::instantiation($found);
-
-                        echo $user->first_name;*/
 
                         $users = User::find_all_user();
                         foreach($users as $user){
@@ -37,6 +26,18 @@
 
                         echo $user->first_name;*/
                         ?>
+
+                        <?php 
+                        /*    $user = new User();
+                            $user->username     = "sumialam";
+                            $user->password     = "sumi";
+                            $user->first_name   = "Sumi";
+                            $user->last_name    = "Alam";
+
+                            $user->create();*/
+                        ?>
+
+
                     </div>
                 </div>
                 <!-- /.row -->
