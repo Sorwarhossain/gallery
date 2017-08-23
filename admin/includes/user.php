@@ -110,7 +110,15 @@ class User{
 	}
 
 
+	public function delete(){
+		global $database;
+		$id 		= $database->escape_string($this->id);
 
+		$sql = "DELETE FROM users WHERE id='$id' LIMIT 1";
+		$database->query($sql);
+
+		return ($database->conn->affected_rows == 1 ? true : false);
+	}
 
 
 

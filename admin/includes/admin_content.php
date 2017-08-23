@@ -38,9 +38,14 @@
                         ?>
 
                         <?php 
-                            $user = User::find_user_by_id(3);
+                           /* $user = User::find_user_by_id(3);
                             $user->last_name = 'Something';
-                            $user->update();
+                            $user->update();*/
+                        ?>
+
+                        <?php 
+                        $user = User::find_user_by_id(3);    
+                        $user->delete();
                         ?>
 
 
