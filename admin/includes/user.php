@@ -87,10 +87,26 @@ class User{
 		if($database->query($sql)){
 			$this->id = $database->the_insert_id();
 			return true;
-			
+
 		} else{
 			return false;
 		}
+	}
+
+
+	public function update(){
+		global $database;
+		$id 		= $database->escape_string($this->id);
+		$username 	= $database->escape_string($this->username);
+		$password 	= $database->escape_string($this->password);
+		$first_name = $database->escape_string($this->first_name);
+		$last_name 	= $database->escape_string($this->last_name);
+
+		$sql = "UPDATE users SET username='$username', password='$password', first_name='$first_name', last_name='$last_name' WHERE id='$id'";
+
+		$database->query($sql);
+
+		return ($database->conn->affected_rows == 1 ? true : false);
 	}
 
 
