@@ -1,5 +1,5 @@
 <?php include("includes/header.php"); ?>
-
+    <?php if(!$session->is_signed_in()){redirect('login.php');} ?>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -42,8 +42,15 @@
                                 <tbody>
                                 <?php foreach($photos as $photo) : ?>
                                     <tr>
-                                        <td><img src="<?php echo $photo->photo_path(); ?>" alt=""></td>
-                                        <td><?php echo $photo->photo_id; ?></td>
+                                        <td>
+                                            <img src="<?php echo $photo->photo_path(); ?>" alt="">
+                                            <div class="picture_links">
+                                                <a href="#">View</a>
+                                                <a href="#">Update</a>
+                                                <a href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
+                                            </div>
+                                        </td>
+                                        <td><?php echo $photo->id; ?></td>
                                         <td><?php echo $photo->filename; ?></td>
                                         <td><?php echo $photo->title; ?></td>
                                         <td><?php echo $photo->size; ?></td>
