@@ -43,10 +43,10 @@
                                 <?php foreach($photos as $photo) : ?>
                                     <tr>
                                         <td>
-                                            <img src="<?php echo $photo->photo_path(); ?>" alt="">
+                                            <img class="admin-photo-list" src="<?php echo $photo->photo_path(); ?>" alt="">
                                             <div class="picture_links">
                                                 <a href="#">View</a>
-                                                <a href="#">Update</a>
+                                                <a href="edit_photo.php?id=<?php echo $photo->id; ?>">Update</a>
                                                 <a href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
                                             </div>
                                         </td>
