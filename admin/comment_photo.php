@@ -1,5 +1,14 @@
 <?php include("includes/header.php"); ?>
-    <?php if(!$session->is_signed_in()){redirect('login.php');} ?>
+<?php if(!$session->is_signed_in()){redirect('login.php');} ?>
+
+<?php 
+if(empty($_GET['id'])){
+    redirect('photos.php');
+}
+
+$comments = Comment::find_the_comments($_GET['id']);
+?>
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -20,11 +29,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Comments Page
+                            Comments On This Photo
                         </h1>
                         <div class="col-md-12">
                             <?php 
-                            $comments = Comment::find_all();
+                            /*$comments = Comment::find_all();*/
 
                             ?>
                             <table class="table table-hover">
@@ -34,7 +43,7 @@
                                         <th>Photo ID</th>
                                         <th>Author</th>
                                         <th>Comment Body</th>
-                                        <td>Action</td>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,7 +55,7 @@
                                         <td><?php echo $comment->body; ?></td>
                                         <td>
                                             <div class="action_links">
-                                                <a class="btn btn-danger" href="delete_comment.php?id=<?php echo $comment->id; ?>">Delete</a>
+                                                <a class="btn btn-danger" href="delete_comment_photo.php?id=<?php echo $comment->id; ?>">Delete</a>
                                             </div>
                                         </td>
                                     </tr>

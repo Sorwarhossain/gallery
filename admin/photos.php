@@ -37,6 +37,7 @@
                                         <th>Filename</th>
                                         <th>Title</th>
                                         <th>Size</th>
+                                        <th>Comments</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,8 +45,8 @@
                                     <tr>
                                         <td>
                                             <img class="admin-photo-list" src="<?php echo $photo->photo_path(); ?>" alt="">
-                                            <div class="picture_links">
-                                                <a href="#">View</a>
+                                            <div class="ation_links">
+                                                <a href="../photo.php?id=<?php echo $photo->id; ?>">View</a>
                                                 <a href="edit_photo.php?id=<?php echo $photo->id; ?>">Update</a>
                                                 <a href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
                                             </div>
@@ -54,6 +55,10 @@
                                         <td><?php echo $photo->filename; ?></td>
                                         <td><?php echo $photo->title; ?></td>
                                         <td><?php echo $photo->size; ?></td>
+                                        <td><?php 
+                                            $comments = Comment::find_the_comments($photo->id);
+                                            echo '<a href="comment_photo.php?id='. $photo->id .'">'. count($comments) .'</a>';
+                                        ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>

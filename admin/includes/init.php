@@ -1,4 +1,24 @@
 <?php 
+require_once dirname(__FILE__) . '/functions.php';
+require_once dirname(__FILE__) . '/config.php';
+require_once dirname(__FILE__) . '/database.php';
+require_once dirname(__FILE__) . '/db_object.php';
+require_once dirname(__FILE__) . '/user.php';
+require_once dirname(__FILE__) . '/photo.php';
+require_once dirname(__FILE__) . '/comment.php';
+require_once dirname(__FILE__) . '/session.php';
+
+
+
+/*include('functions.php');
+include('config.php');
+include('database.php');
+include('db_object.php');
+include('user.php');
+include('photo.php');
+include('comment.php');
+include('session.php');*/
+
 
 
 //defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
@@ -12,10 +32,3 @@ defined('SITE_ROOT') ? null : define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT']. '/g
 
 
 
-require_once('functions.php');
-require_once('config.php');
-require_once('database.php');
-require_once('db_object.php');
-require_once('user.php');
-require_once('photo.php');
-require_once('session.php');

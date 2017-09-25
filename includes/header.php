@@ -1,3 +1,9 @@
+<?php 
+ob_start();
+require_once dirname(__FILE__) . '/../admin/includes/init.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
