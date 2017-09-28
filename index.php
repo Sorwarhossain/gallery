@@ -1,5 +1,17 @@
 <?php include("includes/header.php"); ?>
 
+<?php
+$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+$items_per_page = 4;
+$total_item = Photo::count_record();
+
+$pagination = new Pagination($page, $items_per_page, $total_item);
+$sql = "SELECT * FROM photos LIMIT {$items_per_page} OFFSET {$pagination->offset()}";
+
+$photos = Photo::find_by_query($sql);
+
+?>
+
 
         <div class="row">
 
@@ -8,7 +20,6 @@
 
     			<div class="row thumbnails">
 					<?php 
-					$photos = Photo::find_all();
 					foreach($photos as $photo) :
 					?>
 
@@ -21,9 +32,37 @@
 
 	    			<?php endforeach; ?>
     			</div>
-            
-          
-         
+            	<?php if($pagination->total_page() > 1) :	?>
+          		<div class="spacing-40"></div>
+
+          		<div class="row">
+					<div class="col-md-12">
+						<ul class="pager">
+						<?php 
+						if($pagination->has_next()){
+							echo '<li class="next"><a href="index.php?page='. $pagination->next() .'">Next</a></li>';
+						} ?>
+
+						<?php 
+						for($i = 1; $i <= $pagination->total_page(); $i++){
+							if($i == $pagination->current_page){
+								echo '<li class="active"><a href="index.php?page='. $i .'">'. $i .'</a></li>';
+							} else {
+								echo '<li><a href="index.php?page='. $i .'">'. $i .'</a></li>';
+							}
+						}
+						?>
+
+
+						<?php if($pagination->has_previous()){
+							echo '<li class="previous"><a href="index.php?page='. $pagination->previous() .'">Previous</a></li>';
+						}
+
+						?>
+						</ul>
+					</div>
+          		</div>
+          		<?php endif; ?>
 
             </div>
 
@@ -38,5 +77,9 @@
 
         </div>
         <!-- /.row -->
+
+
+
+
 
         <?php include("includes/footer.php"); ?>

@@ -1,0 +1,12 @@
+.spacing-40{
+	width: 100%;
+	height: 40px;
+	display: block;
+	background-color: transparent;
+}
+.pager li{
+	margin: 5px;
+}
+.pager li.active a{
+    background-color: #eee;
+}

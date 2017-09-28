@@ -21,7 +21,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Photos Page
-                            <small>Subheading</small>
+                            <small></small>
                         </h1>
                         
                         <div class="col-md-12">
